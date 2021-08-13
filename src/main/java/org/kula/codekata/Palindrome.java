@@ -6,7 +6,7 @@ import org.apache.commons.cli.*;
  * Palindrome of an integer
  *
  */
-public class Palindrome implements Solution {
+public class Palindrome implements Solution<Boolean> {
 
     static class Solution {
         public boolean isPalindrome(int x) {
@@ -69,14 +69,15 @@ public class Palindrome implements Solution {
     }
 
     @Override
-    public void run(CommandLine cmd) {
+    public Boolean run(CommandLine cmd) {
         int num = Integer.parseInt(cmd.getOptionValue("number"));
         Solution sol = new Solution();
-        if(sol.isPalindrome(num)) {
+        boolean bOK = sol.isPalindrome(num);
+        if(bOK) {
             System.out.println(num + " is a plaindrome");
         } else {
             System.out.println(num + " is not a plaindrome");
         }
-
+        return bOK;
     }
 }
